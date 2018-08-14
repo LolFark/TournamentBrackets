@@ -1,4 +1,4 @@
-# tournamentbrackets
+# TournamentBrackets
 
 ## Project setup
 ```
