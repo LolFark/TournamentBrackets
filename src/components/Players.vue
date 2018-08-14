@@ -7,7 +7,9 @@
         <p>{{ player }}</p>
       </form>
       <ul>
-        <li v-for="player in currentPlayers">{{ player.text }}</li>
+        <li v-for="player in currentPlayers">{{ player.text }}
+        <button v-on:click="remove(player)"></button>
+        </li>
       </ul>
       <p v-if="currentPlayers.length < 1">No players added</p>
       <p v-else># of players: {{ currentPlayers.length}}</p>
@@ -30,6 +32,9 @@
             addPlayer() {
                 this.currentPlayers.push({text: this.player});
                 this.player = "";
+            },
+            remove(p) {
+                this.currentPlayers.splice(p,1);
             }
         }
     }
@@ -37,19 +42,33 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h3 {
-    margin: 40px 0 0;
+  .holder {
+    background: #fff;
   }
+
   ul {
-    list-style-type: none;
+    margin: 0;
     padding: 0;
+    list-style-type: none;
   }
-  li {
-    display: inline-block;
-    font-weight: bold;
-    margin: 0 10px;
+
+  ul li {
+    padding: 20px;
+    font-size: 1.3em;
+    background-color: #EEEEEE;
+    border-left: 1px solid #EEFFEE;
+    margin-bottom: 2px;
+    color: #3E5252;
   }
-  a {
-    color: #42b983;
+
+  p {
+    text-align:center;
+    padding: 30px 0;
+    color: gray;
   }
+  button {
+    float: right;
+  }
+
+
 </style>
